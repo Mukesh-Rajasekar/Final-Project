@@ -9,6 +9,7 @@ public class User {
     @Id
     private String userId;
     private String location;
+    private String profileImage;
     private String cuisine;
     private String rating;
     private String contactNumber;
@@ -17,13 +18,14 @@ public class User {
 
     public User() {}
 
-    public User(String userId, String password, String location, String cuisine, String rating, String contactNumber, String address) {
+    public User(String userId, String password,String profileImage, String location, String cuisine, String rating, String contactNumber, String address) {
         this.userId = userId;
         this.location = location;
         this.cuisine = cuisine;
         this.rating = rating;
         this.contactNumber = contactNumber;
         this.address = address;
+        this.profileImage=profileImage;
     }
 
     public String getUserId() {
@@ -42,7 +44,13 @@ public class User {
         this.password = password;
     }
 
+    public String getProfileImage() {
+        return profileImage;
+    }
 
+    public void setProfileImage(String profileImage) {
+        this.profileImage = profileImage;
+    }
 
     public String getLocation() {
         return location;
