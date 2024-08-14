@@ -10,7 +10,7 @@ public class Restaurant {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+
 
 
 
@@ -49,13 +49,7 @@ public class Restaurant {
         this.password = password;
     }
 
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getLocation() {
         return location;
