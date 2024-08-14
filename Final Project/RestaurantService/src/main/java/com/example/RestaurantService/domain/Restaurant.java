@@ -7,7 +7,6 @@ import jakarta.persistence.Id;
 @Entity
 public class Restaurant {
     @Id
-
     private Long restaurantId;
     private String name;
     private String location;
