@@ -26,18 +26,12 @@ public class UserController {
 
     @PutMapping("/updateUsernameAndEmail/{userId}")
     public ResponseEntity<User> updateUsernameAndEmail(@PathVariable String userId,
-                                                       @RequestParam String newUsername,
-                                                       @RequestParam String newEmail) {
-        // Call the service to update the username and email
-        User updatedUser = iUserService.updateUsernameAndEmail(userId, newUsername, newEmail);
-
-        // Check if the update was successful
-        if (updatedUser == null) {
-            return ResponseEntity.badRequest().body(null); // Return a 400 Bad Request if the update fails
+                                                       @RequestBody User updatedUser) {
+        User result = iUserService.updateUser(userId, updatedUser);
+        if (result == null) {
+            return ResponseEntity.badRequest().body(null); // Return 400 if update fails
         }
-
-        return ResponseEntity.ok(updatedUser); // Return the updated user if successful
+        return ResponseEntity.ok(result); // Return 200 OK with updated user
     }
-
 
 }

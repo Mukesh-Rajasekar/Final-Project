@@ -24,7 +24,7 @@ public class UserService implements IUserService{
     }
 
     @Override
-    public User updateUsernameAndEmail(String userId, String newUsername, String newEmail) {
+    public User updateUser(String userId, User updatedUser) {
         // Retrieve the user by userId
         Optional<User> optionalUser = iUserRepository.findById(userId);
         if (optionalUser.isEmpty()) {
@@ -33,21 +33,21 @@ public class UserService implements IUserService{
 
         User user = optionalUser.get();
 
-        // Check if the new username already exists and is not the current user's username
-        if (!user.getUsername().equals(newUsername) && iUserRepository.findByUsername(newUsername) != null) {
-            return null; // Return null if the username is already taken
+        // Update the username and email if they are provided
+        if (updatedUser.getUsername() != null && !updatedUser.getUsername().equals(user.getUsername())) {
+            if (iUserRepository.findByUsername(updatedUser.getUsername()) != null) {
+                return null; // Return null if the username is already taken
+            }
+            user.setUsername(updatedUser.getUsername());
         }
 
-        // Check if the new email already exists and is not the current user's email
-        if (!user.getEmail().equals(newEmail) && iUserRepository.findByEmail(newEmail) != null) {
-            return null; // Return null if the email is already in use
+        if (updatedUser.getEmail() != null && !updatedUser.getEmail().equals(user.getEmail())) {
+            if (iUserRepository.findByEmail(updatedUser.getEmail()) != null) {
+                return null; // Return null if the email is already in use
+            }
+            user.setEmail(updatedUser.getEmail());
         }
-
-        // Update the username and email
-        user.setUsername(newUsername);
-        user.setEmail(newEmail);
 
         return iUserRepository.save(user);
     }
-
 }
