@@ -1,19 +1,23 @@
 package com.example.RestaurantService.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 
-@Entity
+
+
 public class Cuisine {
-    @Id
     private Long cuisineId;
-
     private String name;
-
     private String type;
-
     private String description;
 
+    public Cuisine(Long cuisineId, String name, String type, String description) {
+        this.cuisineId = cuisineId;
+        this.name = name;
+        this.type = type;
+        this.description = description;
+    }
+
+    public Cuisine() {
+    }
 
     public Long getCuisineId() {
         return cuisineId;
@@ -46,4 +50,7 @@ public class Cuisine {
     public void setDescription(String description) {
         this.description = description;
     }
+
+
+
 }

@@ -1,22 +1,30 @@
 package com.example.RestaurantService.domain;
+import org.springframework.data.annotation.Id;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-
-@Entity
 public class Restaurant {
     @Id
-    private Long restaurantId;
+    private String restaurantId;
     private String name;
     private String location;
-    private Long cuisineId;
+    private Cuisine cuisine;
 
 
-    public Long getRestaurantId() {
+    public Restaurant(){
+
+    }
+
+    public Restaurant(String restaurantId, String name, String location, Cuisine cuisine) {
+        this.restaurantId = restaurantId;
+        this.name = name;
+        this.location = location;
+        this.cuisine = cuisine;
+    }
+
+    public String getRestaurantId() {
         return restaurantId;
     }
 
-    public void setRestaurantId(Long restaurantId) {
+    public void setRestaurantId(String restaurantId) {
         this.restaurantId = restaurantId;
     }
 
@@ -36,11 +44,11 @@ public class Restaurant {
         this.location = location;
     }
 
-    public Long getCuisineId() {
-        return cuisineId;
+    public Cuisine getCuisine() {
+        return cuisine;
     }
 
-    public void setCuisineId(Long cuisineId) {
-        this.cuisineId = cuisineId;
+    public void setCuisine(Cuisine cuisine) {
+        this.cuisine = cuisine;
     }
 }

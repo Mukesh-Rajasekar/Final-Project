@@ -31,7 +31,6 @@ public class JWTFilter extends GenericFilterBean {
             filterChain.doFilter(request, response); //some more filters , controller}
         }
 
-
     }
 
 

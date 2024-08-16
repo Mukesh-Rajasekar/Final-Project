@@ -5,10 +5,8 @@ import jakarta.persistence.Id;
 
 @Entity
 public class UserAuthentication {
-
     @Id
     String userId;
-
     String password;
 
 
